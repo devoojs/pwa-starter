@@ -39,6 +39,39 @@
   </head>
 
   <body>
+
+    <ul id="list"></ul>
+
+    <script>
+      // API returns array of objects
+      // Iterate over them and add each element as a list element
+      function successFunc(data) {
+        data.forEach(function(item, i) {
+          document.getElementById("list").innerHTML += "<li>" + item.name + " " + item.score + "</li>";
+        });
+      }
+
+      function errorFunc(e) {
+        console.log(e);
+      }
+
+      Sheetsu.read("https://sheetsu.com/apis/v1.0bu/4a3010d931b6/", {}).then(successFunc, errorFunc);
+    </script>
+
+
+
+    <div class="row" sheetsu="https://sheetsu.com/apis/v1.0/YOUR_ID">
+      <div class="col-4">
+        <img src="{{photo_url}}">
+        <h1>{{name}}</h1>
+        <p>{{description}}</p>
+      </div>
+    </div>
+
+    <script src="//load.sheetsu.com"></script>
+
+
+
     <!-- Our app-index web component. This component is defined in src/pages/app-index.ts-->
     <fast-design-system-provider use-defaults>
       <app-index></app-index>
